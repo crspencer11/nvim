@@ -690,6 +690,8 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+        ensure_installed = { 'pyright', 'tsserver', 'rust_analyzer', 'gopls' }, -- List LSPs you want to install
+        automatic_installation = true, -- Automatically install LSPs as needed
       }
     end,
   },
