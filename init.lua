@@ -121,6 +121,10 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+vim.opt.tabstop = 4 -- Number of spaces a tab counts for
+vim.opt.shiftwidth = 4 -- Number of spaces for autoindent (>> and <<)
+vim.opt.expandtab = true -- Convert tabs to spaces
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -173,6 +177,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = 'Nav to Explore page' })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -192,6 +197,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Splitting windows
 vim.keymap.set('n', '<leader>s-', '<C-w>s', { desc = 'Split window horiz' })
 vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vert' })
+vim.keymap.set('n', '<leader>=', '<C-w>=', { desc = 'Even windows' })
 --
 -- file shortcuts
 vim.keymap.set('n', '<C-s>', ':w!', { desc = 'Control + s to save file' })
@@ -690,7 +696,7 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
-        ensure_installed = { 'pyright', 'tsserver', 'rust_analyzer', 'gopls' }, -- List LSPs you want to install
+        ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'gopls' }, -- List LSPs you want to install
         automatic_installation = true, -- Automatically install LSPs as needed
       }
     end,
