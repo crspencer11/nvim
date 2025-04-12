@@ -633,11 +633,11 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {
-          settings = {
-            gopls = {
-              buildflags = { '-tags=debug' },
-            },
-          },
+          -- settings = {
+          --   gopls = {
+          --     buildflags = { '-tags=debug' },
+          --   },
+          -- },
         },
         pyright = {},
         rust_analyzer = {},
